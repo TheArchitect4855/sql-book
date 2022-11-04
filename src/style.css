@@ -1,0 +1,90 @@
+:root {
+	--background-color: #fff;
+	--background-secondary-color: #eee;
+	--text-color: #333;
+	--text-light-color: #888;
+	--border-color: #cdf;
+	--highlight-color: dodgerblue;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	50% {
+		transform: rotate(180deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.error {
+	color: red;
+	font-size: 0.9em;
+}
+
+.panel {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.spinner {
+	animation: 1.5s linear infinite spin;
+	border: 2px solid var(--border-color);
+	border-color: var(--text-color);
+	border-radius: 50%;
+	border-top-color: var(--border-color);
+
+	width: 1em;
+	height: 1em;
+}
+
+.subtitle {
+	color: var(--text-light-color);
+	font-style: italic;
+}
+
+a {
+	color: var(--highlight-color);
+}
+
+body {
+	background-color: var(--background-color);
+	color: var(--text-color);
+	font-size: 12pt;
+	margin: 0;
+
+	width: 100vw;
+	height: 100vh;
+}
+
+button {
+	cursor: pointer;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid var(--border-color);
+}
+
+input {
+	border: 1px solid var(--border-color);
+	outline: none;
+	padding: 0.5ch;
+}
+
+select {
+	background-color: var(--background-color);
+	border: 1px solid var(--border-color);
+	border-radius: 0;
+}
