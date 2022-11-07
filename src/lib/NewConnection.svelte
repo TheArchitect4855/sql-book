@@ -62,7 +62,7 @@
 	</section>
 	<section>
 		<label for="port-input">Port:</label>
-		<input id="port-input" name="port" type="text" pattern="^\d+$" />
+		<input id="port-input" name="port" type="text" />
 	</section>
 	<section>
 		<label for="user-input">User:</label>
