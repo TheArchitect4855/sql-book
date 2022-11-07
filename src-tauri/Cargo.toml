@@ -19,6 +19,7 @@ serde = { version = "1.0", features = ["derive"] }
 tauri = { version = "1.1", features = ["api-all"] }
 mysql = "22.2.0"
 dirs = "4.0.0"
+postgres = "0.19.4"
 
 [features]
 # by default Tauri runs in production mode

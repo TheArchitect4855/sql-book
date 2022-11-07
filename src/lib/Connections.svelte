@@ -20,6 +20,8 @@
 			resizable: false,
 			title: 'Create New Connection',
 			url: '/add-connection',
+			width: 300,
+			height: 400,
 		});
 
 		view.onCloseRequested(getConnections);

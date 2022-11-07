@@ -53,6 +53,7 @@
 		<label for="driver-input">Driver:</label>
 		<select id="driver-input" name="driver">
 			<option value="mysql">MySQL</option>
+			<option value="postgres">Postgres</option>
 		</select>
 	</section>
 	<section>

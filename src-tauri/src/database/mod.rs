@@ -3,6 +3,7 @@ use serde::{Deserialize, Serialize};
 use crate::structs::{self, Table};
 
 mod mysql_driver;
+mod postgres_driver;
 
 enum Command {
 	AddConn(ConnectionInfo),
@@ -34,6 +35,7 @@ pub struct ConnectionInfo {
 
 enum ConnectionDriver {
 	MySql(mysql::Conn),
+	Postgres(postgres::Client),
 }
 
 type CommandBundle = (
@@ -228,6 +230,11 @@ fn connect(info: &ConnectionInfo) -> Result<ConnectionDriver, String> {
 				.map(|v| ConnectionDriver::MySql(v))
 				.map_err(|e| format!("Connection Error: {}", e))
 		},
+		"postgres" => {
+			postgres::Client::connect(&info.uri, postgres::NoTls)
+				.map(|v| ConnectionDriver::Postgres(v))
+				.map_err(|e| format!("Connection Error: {}", e))
+		}
 		_ => Err(String::from("Unknown driver type")),
 	}
 }
@@ -281,6 +288,8 @@ fn do_query(driver: &mut ConnectionDriver, query: String) -> Result<Table, Strin
 	println!("Performing query:\n{}", query);
 	match driver {
 		ConnectionDriver::MySql(conn) => mysql_driver::query(conn, &query)
+			.map_err(|e| format!("Query Error: {}", e)),
+		ConnectionDriver::Postgres(client) => postgres_driver::query(client, &query)
 			.map_err(|e| format!("Query Error: {}", e)),
 	}
 }

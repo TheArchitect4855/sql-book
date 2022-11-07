@@ -38,7 +38,7 @@ pub fn query(conn: &mut Conn, query: &str) -> Result<structs::Table, mysql::Erro
 
 fn display_value(v: Value) -> String {
 	let s = match v {
-		Value::NULL => String::from("NULL"),
+		Value::NULL => String::from("[NULL]"),
 		Value::Bytes(v) => try_convert_str(v),
 		Value::Int(v) => v.to_string(),
 		Value::UInt(v) => v.to_string(),
